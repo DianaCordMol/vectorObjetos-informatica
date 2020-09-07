@@ -57,6 +57,7 @@
                 <td><button onclick="agregar()">AGREGAR</button></td>
             </tr>
         </table>
+        
         <h1>LISTADO DE ESTUDIANTES</h1>
         <br>
         <table border="5">
@@ -116,6 +117,8 @@
 
                 var arr = myArrayEst[i];
 
+                console.log(Object.values(arr));
+
                 salida += '<tr>'
                 salida += '<td>' + arr.cedula + '</td>';
                 salida += '<td>' + arr.nombre + '</td>';
@@ -129,11 +132,15 @@
                 salida += '</tr>';
             }
             document.getElementById('cuerpo').innerHTML = salida;
+
+            // console.log(promedioCurso())
+            // console.log(reprobadosCurso());
+            console.log(excelentesCurso())
         }
 
         function notaFinal(n1, n2, n3) {
             var def = (parseFloat(n1) + parseFloat(n2) + parseFloat(n3)) / 3;
-            return def.toFixed(2);
+            return parseFloat(def.toFixed(2));
         }
 
         function color(n1, n2, n3) {
@@ -190,57 +197,165 @@
 
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Promedio Curso" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
 
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Número aprobados" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
 
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Número reprobados" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
-                
+
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Número deficientes" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
 
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Número insuficientes" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
-                
+
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Número buenos" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
 
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Número aceptables" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
 
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Número sobresalientes" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
 
                 salida1 += "<tr>";
                 salida1 += "<td>" + "Número excelentes" + "</td>";
-                salida1 += "<td>" +  + "</td>";
+                salida1 += "<td>" + + "</td>";
                 salida1 += "</tr>";
             }
             document.getElementById('table2').innerHTML = salida1;
         }
 
-        function promedio(n1, n2, n3) {
-            var sum = 0;
+        function promedioCurso() {
 
+            var suma = 0;
 
+            for (let index = 0; index < myArrayEst.length; index++) {
+
+                const student = myArrayEst[index]
+
+                suma += notaFinal(student.n1, student.n2, student.n3);
+
+            }
+
+            return suma / myArrayEst.length;
         }
+
+        function aprobadosCurso() {
+            var apr = 0;
+
+            for (let index = 0; index < myArrayEst.length; index++) {
+                const student = myArrayEst[index];
+
+                if (notaFinal(student.n1, student.n2, student.n3) >= 3) {
+                    apr++;
+                }
+            }
+            return apr;
+        }
+
+        function reprobadosCurso() {
+            var repr = 0;
+
+            for (let index = 0; index < myArrayEst.length; index++) {
+                const student = myArrayEst[index];
+
+                if (notaFinal(student.n1, student.n2, student.n3) < 3) {
+                    repr++;
+                }
+            }
+            return repr;
+        }
+
+        function deficientesCurso() {
+            var deficientes = 0;
+
+            for (let index = 0; index < myArrayEst.length; index++) {
+                const student = myArrayEst[index];
+                if (reconocimiento(student.n1, student.n2, student.n3) == "Deficiente") {
+                    deficientes++;
+                }
+            }
+            return deficientes;
+        }
+
+        function insuficientesCurso() {
+            var insuficientes = 0;
+
+            for (let index = 0; index < myArrayEst.length; index++) {
+                const student = myArrayEst[index];
+                if (reconocimiento(student.n1, student.n2, student.n3) == "Insuficiente") {
+                    insuficientes++;
+                }
+            }
+            return insuficientes;
+        }
+
+        function buenosCurso() {
+            var buenos = 0;
+
+            for (let index = 0; index < myArrayEst.length; index++) {
+                const student = myArrayEst[index];
+                if (reconocimiento(student.n1, student.n2, student.n3) == "Bueno") {
+                    buenos++;
+                }
+            }
+            return buenos;
+        }
+
+        function aceptablesCurso() {
+            var aceptables = 0;
+
+            for (let index = 0; index < myArrayEst.length; index++) {
+                const student = myArrayEst[index];
+                if (reconocimiento(student.n1, student.n2, student.n3) == "Aceptable") {
+                    aceptables++;
+                }
+            }
+            return aceptables;
+        }
+
+        function sobresalientesCurso() {
+            var sobresalientes = 0;
+
+            for (let index = 0; index < myArrayEst.length; index++) {
+                const student = myArrayEst[index];
+                if (reconocimiento(student.n1, student.n2, student.n3) == "Sobresaliente") {
+                    sobresalientes++;
+                }
+            }
+            return sobresalientes;
+        }
+
+        function excelentesCurso() {
+            var excelentes = 0;
+
+            for (let index = 0; index < myArrayEst.length; index++) {
+                const student = myArrayEst[index];
+                if (reconocimiento(student.n1, student.n2, student.n3) == "Excelente") {
+                    excelentes++;
+                }
+            }
+            return excelentes;
+        }
+
 
         // yo en qué momento te mandé solicitud?
 
