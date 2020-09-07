@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Objetos</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+            font-style: oblique;
+        }
+        table{
+            background-color: chartreuse;
+
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>MANEJOO DATOS ESTUDIANTE</h1>
+        <hr size="20" color="red">
+        <br>
+        <table border="5">
+            <th>Craraterísticas</th><th>Datos</th>
+            <tbody>
+                <tr><td>Nombres</td><td><input type="text" name="nom" id="nom" placeholder="Digite Nombres" autofocus></td></tr>
+                <tr><td>Apellidos</td><td><input type="text" name="ape" id="ape" placeholder="Digite Apellidos" ></td></tr>
+                <tr><td>Nota 1</td><td><input type="text" name="n1" id="n1" placeholder="Digite Nota 1" ></td></tr>
+                <tr><td>Nota 2</td><td><input type="text" name="n2" id="n2" placeholder="Digite Nota 2" ></td></tr>
+                <tr><td>Nota 3</td><td><input type="text" name="n3" id="n3" placeholder="Digite Nota 3" ></td></tr>
+            </tbody>
+        </table>
+        <table border="5">
+            <tbody>
+                <tr><td><button onclick="agregar()">AGREGAR</button></td></tr>
+            </tbody>
+        </table>
+        <br>
+        <hr size="20" color="red">
+        <br>
+        <h1>LISTADO DE ESTUDIANTES</h1>
+        <br>
+        <table border="5">
+            <th>Nombres</th><th>Apellidos</th><th>Nota 1</th><th>Nota 2</th><th>Nota 3</th><th>Nota Final</th><th>Estado</th>
+            <tbody id="cuerpo"></tbody>
+        </table>
+    </center>
+    <script src="ejemplo1CreaciónObjetos.js"></script>
+</body>
+</html>

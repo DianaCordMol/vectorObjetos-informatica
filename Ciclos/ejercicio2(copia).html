@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segundo Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 20%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Segundo Ejercicio</h1>
+    <hr>
+    <br>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>NÚMERO</th>
+                <th>VALOR ESPAÑOL</th>
+                <th>VALOR INGLÉS</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla">
+        </tbody>
+
+    </table>
+
+    <!-- Realice una aplicación que pida como entrada un número comprendido entre 1 y 20 y los
+visualice en una tabla con tres columnas. Una columna para el número, otra columna para
+su valor en letra español y la ora columna para su valor en letra en inglés.  -->
+    <script>
+        var tablaDatos = '';
+        var vlrEs;
+        var vlrIn;
+        var num;
+        // var tot = parseInt(prompt("¿Cuántos números ingresarás?"));
+        do {
+            num = parseInt(prompt("Ingresa un número entre 1 y 20", ""));
+        } while (num <= 0 || num > 20);
+
+        // console.log(num);
+
+        for (var i = 1; i <= num; i++) {
+
+            switch (i) {
+
+                case 1:
+                    vlrEs = "Uno";
+                    vlrIn = "One";
+                    break;
+                case 2:
+                    vlrEs = "Dos";
+                    vlrIn = "Two";
+                    break;
+                case 3:
+                    vlrEs = "Tres";
+                    vlrIn = "Three";
+                    break;
+                case 4:
+                    vlrEs = "Cuatro";
+                    vlrIn = "Four";
+                    break;
+                case 5:
+                    vlrEs = "Cinco";
+                    vlrIn = "Five";
+                    break;
+                case 6:
+                    vlrEs = "Seis";
+                    vlrIn = "Six";
+                    break;
+                case 7:
+                    vlrEs = "Siete";
+                    vlrIn = "Seven";
+                    break;
+                case 8:
+                    vlrEs = "Ocho";
+                    vlrIn = "Eight";
+                    break;
+                case 9:
+                    vlrEs = "Nueve";
+                    vlrIn = "Nine";
+                    break;
+                case 10:
+                    vlrEs = "Diez";
+                    vlrIn = "Ten";
+                    break;
+                case 11:
+                    vlrEs = "Once";
+                    vlrIn = "Eleven";
+                    break;
+                case 12:
+                    vlrEs = "Doce";
+                    vlrIn = "Twelven";
+                    break;
+                case 13:
+                    vlrEs = "Trece";
+                    vlrIn = "Thirteen";
+                    break;
+                case 14:
+                    vlrEs = "Catorce";
+                    vlrIn = "Fourteen";
+                    break;
+                case 15:
+                    vlrEs = "Quince";
+                    vlrIn = "Fifteen";
+                    break;
+                case 16:
+                    vlrEs = "Dieciseis";
+                    vlrIn = "Sixteen";
+                    break;
+                case 17:
+                    vlrEs = "Diecisiete";
+                    vlrIn = "Seventeen";
+                    break;
+                case 18:
+                    vlrEs = "Dieciocho";
+                    vlrIn = "Eighteen";
+                    break;
+                case 19:
+                    vlrEs = "Diecinueve";
+                    vlrIn = "Nineteen";
+                    break;
+                case 20:
+                    vlrEs = "Veinte";
+                    vlrIn = "Twenty";
+                    break;
+            }
+
+            tablaDatos += "<tr>";
+            tablaDatos += "<td>" + i + "</td>";
+            tablaDatos += "<td>" + vlrEs + "</td>";
+            tablaDatos += "<td>" + vlrIn + "</td>";
+            tablaDatos += "</tr>";
+
+        }
+
+        document.getElementById("tabla").innerHTML = tablaDatos;
+    </script>
+
+</body>
+
+</html>

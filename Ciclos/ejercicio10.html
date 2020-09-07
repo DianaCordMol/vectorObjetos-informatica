@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Décimo Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 20%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Décimo Ejercicio</h1>
+    <hr>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Números</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla1">
+
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Total suma pares</th>
+                <th>Total suma impares</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla2">
+
+        </tbody>
+    </table>
+    <!-- . imprima los números del 1 al 100. Que calcule la suma de todos los números pares por un
+lado, y por otro, la de todos los impares.-->
+    <script>
+
+        var numeros = '';
+        var tablaTotal = '';
+        var sumPar = 0;
+        var sumImpar = 0;
+        
+        for (var i = 1; i <= 100; i++) {
+
+            numeros += "<tr>";
+            numeros += "<td>" + i + "</td>";
+            numeros += "</tr>";
+
+            if (i % 2 != 0) {
+                sumImpar += i;
+            } else {
+                sumPar += i;
+            }
+        }
+
+        document.getElementById("tabla1").innerHTML = numeros;
+
+        tablaTotal += "<tr>";
+        tablaTotal += "<td>" + sumPar + "</td>";
+        tablaTotal += "<td>" + sumImpar + "</td>";
+        tablaTotal += "</tr>";
+
+        document.getElementById("tabla2").innerHTML = tablaTotal;
+
+    </script>
+</body>
+
+</html>

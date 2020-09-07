@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer Ejercicio</title>
+    <link rel="stylesheet" href="ejercicio2.css">
+</head>
+
+<body>
+
+        <h1>DATOS PERSONALES</h1>
+
+        <table>
+            <tr>
+                <td>Cedula</td>
+                <td>
+                    <input type="number" placeholder="Cédula" id="cedula" class="cedula">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td>
+                    <input type="text" placeholder="Nombre" id="nombre" class="nombre">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Apellido</td>
+                <td>
+                    <input type="text" placeholder="Apellido" id="apellido" class="apellido">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Edad</td>
+                <td>
+                    <input type="number" placeholder="Edad" id="edad" class="edad" min="18">
+                </td>
+            </tr>
+        </table>
+
+        <button type="button" onclick="mostrarDatos()" id="guardar">Guardar</button>
+
+        <table>
+            <tr>
+                <td>Nuevo nombre</td>
+                <td>
+                    <input type="text" placeholder="Nombre" id="nuevoNombre" class="nuevoNombre">
+                </td>
+            </tr>
+        </table>
+
+        <button type="button" onclick="cambiarNombre()" id="modificar">Modificar</button>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla1">
+
+        </tbody>
+
+    </table>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla2">
+
+        </tbody>
+
+    </table>
+
+    <script src="ejercicio2.js">
+
+    </script>
+
+
+
+</body>
+
+</html>

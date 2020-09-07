@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 20%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Primer Ejercicio</h1>
+    <hr>
+    <br>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>i</th>
+                <th>Suma</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla1">
+        </tbody>
+
+    </table>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>Pares</th>
+                <th>Impares</th>
+                <th>Múltiplos de 5</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla2">
+        </tbody>
+
+    </table>
+
+    <!--Realice un programa que reciba un valor numérico de entrada y realice la suma desde 1
+hasta el número digitado y cuente los números pares, impares y los múltiplos de cinco, el
+programa debe visualizar los números desde 1 hasta el número digitado al igual que la suma
+y la cantidad de números pares, impares, múltiplos de cinco.-->
+
+    <script>
+
+        var t1 = '';
+        var t2 = '';
+        var num = parseInt(prompt("Ingresa un número", ""));
+        var suma = 0;
+        var contPar = 0;
+        var contImpar = 0;
+        var multCinco = 0;
+
+        for (var i = 1; i <= num; i++) {
+
+            suma += i;
+
+            if (suma % 2 != 0) {
+                contImpar++;
+            } else {
+                contPar++;
+            }
+
+            if (suma % 5 == 0) {
+                multCinco++;
+            }
+
+            t1 += "<tr>";
+            t1 += "<td>" + i + "</td>";
+            t1 += "<td>" + suma + "</td>";
+            t1 += "</tr>";
+
+        }
+
+        document.getElementById("tabla1").innerHTML = t1;
+
+        t2 += "<tr>";
+        t2 += "<td>" + contPar + "</td>";
+        t2 += "<td>" + contImpar + "</td>";
+        t2 += "<td>" + multCinco + "</td>";
+        t2 += "</tr>";
+
+        document.getElementById("tabla2").innerHTML = t2;
+
+
+    </script>
+
+</body>
+
+</html>

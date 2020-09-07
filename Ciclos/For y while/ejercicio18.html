@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Décimoctavo Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 20%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Decimoctavo Ejercicio</h1>
+    <hr>
+    <br>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>NÚMERO</th>
+                <th>VALOR ESPAÑOL</th>
+                <th>VALOR INGLÉS</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla">
+        </tbody>
+
+    </table>
+
+    <!-- Pedir como entrada un número visualizar los números desde cero hasta el número que se
+pidió como entrada, e una columna los números, en otra columna la cantidad en letra
+español y en una tercera columna la cantidad en inglés, cada palabra o cantidad n letra debe
+ser de un color diferente  -->
+
+    <script>
+        var tablaDatos = '';
+        var vlrEs;
+        var vlrIn;
+        var num;
+        var color;
+        // var tot = parseInt(prompt("¿Cuántos números ingresarás?"));
+        do {
+            num = parseInt(prompt("Ingresa un número entre 1 y 20", ""));
+        } while (num < 0 || num > 20);
+
+        // console.log(num);
+
+        for (var i = 0; i <= num; i++) {
+
+            switch (i) {
+
+                case 0:
+                    vlrEs = "Cero";
+                    vlrIn = "Zero";
+                    color = "#000000"
+                    break;
+                case 1:
+                    vlrEs = "Uno";
+                    vlrIn = "One";
+                    color = "#7776BC"
+                    break;
+                case 2:
+                    vlrEs = "Dos";
+                    vlrIn = "Two";
+                    color = "#FFEC51"
+                    break;
+                case 3:
+                    vlrEs = "Tres";
+                    vlrIn = "Three";
+                    color = "#CDC7E5"
+                    break;
+                case 4:
+                    vlrEs = "Cuatro";
+                    vlrIn = "Four";
+                    color = "#FF674D"
+                    break;
+                case 5:
+                    vlrEs = "Cinco";
+                    vlrIn = "Five";
+                    color = "#628395"
+                    break;
+                case 6:
+                    vlrEs = "Seis";
+                    vlrIn = "Six";
+                    color = "#6C3A5C"
+                    break;
+                case 7:
+                    vlrEs = "Siete";
+                    vlrIn = "Seven";
+                    color = "#DD5E98"
+                    break;
+                case 8:
+                    vlrEs = "Ocho";
+                    vlrIn = "Eight";
+                    color = "#3E1929"
+                    break;
+                case 9:
+                    vlrEs = "Nueve";
+                    vlrIn = "Nine";
+                    color = "#6E75A8"
+                    break;
+                case 10:
+                    vlrEs = "Diez";
+                    vlrIn = "Ten";
+                    color = "#845A6D"
+                    break;
+                case 11:
+                    vlrEs = "Once";
+                    vlrIn = "Eleven";
+                    color = "#97D8B2"
+                    break;
+                case 12:
+                    vlrEs = "Doce";
+                    vlrIn = "Twelven";
+                    color = "#87B37A"
+                    break;
+                case 13:
+                    vlrEs = "Trece";
+                    vlrIn = "Thirteen";
+                    color = "#B02E0C"
+                    break;
+                case 14:
+                    vlrEs = "Catorce";
+                    vlrIn = "Fourteen";
+                    color = "#423E37"
+                    break;
+                case 15:
+                    vlrEs = "Quince";
+                    vlrIn = "Fifteen";
+                    color = "#381D2A"
+                    break;
+                case 16:
+                    vlrEs = "Dieciseis";
+                    vlrIn = "Sixteen";
+                    color = "#C06E52"
+                    break;
+                case 17:
+                    vlrEs = "Diecisiete";
+                    vlrIn = "Seventeen";
+                    color = "#43281C"
+                    break;
+                case 18:
+                    vlrEs = "Dieciocho";
+                    vlrIn = "Eighteen";
+                    color = "#84ACCE"
+                    break;
+                case 19:
+                    vlrEs = "Diecinueve";
+                    vlrIn = "Nineteen";
+                    color = "#C69C72"
+                    break;
+                case 20:
+                    vlrEs = "Veinte";
+                    vlrIn = "Twenty";
+                    color = "#16E0BD"
+                    break;
+            }
+
+            tablaDatos += "<tr style='background: " + color + "'>";
+            tablaDatos += "<td style>" + i + "</td>";
+            tablaDatos += "<td>" + vlrEs + "</td>";
+            tablaDatos += "<td>" + vlrIn + "</td>";
+            tablaDatos += "</tr>";
+
+        }
+
+        document.getElementById("tabla").innerHTML = tablaDatos;
+    </script>
+
+</body>
+
+</html>

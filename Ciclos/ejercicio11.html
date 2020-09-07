@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        header {
+            border-bottom: 2px solid white;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 80px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px;
+            color: white;
+            background: blue;
+            border: 0;
+            font-size: 18px;
+            border-radius: 2px;
+        }
+
+        .reloj {
+            margin: 20px auto;
+            width: 600px;
+            height: 200px;
+            display: flex;
+        }
+
+        .reloj>div {
+            width: 190px;
+            background: white;
+            font-size: 80px;
+            color: red;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reloj .b {
+            width: 20px;
+            border: 0;
+            font-size: 50px;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Reloj Digital</h1>
+    </header>
+
+
+
+    <form id="formulario">
+        <label for="h">Hora</label>
+        <input id="h" type="number" min="0" max="23" required value="0">
+
+        <label for="m">Min</label>
+        <input id="m" type="number" min="0" max="59" required value="0">
+
+        <label for="s">Seg</label>
+        <input id="s" type="number" min="0" max="59" required value="0">
+
+        <button>Establecer</button>
+    </form>
+
+    
+    <div class="reloj">
+        <div>
+            <p id="hor">00</p>
+        </div>
+        <div class="b">
+            <p>:</p>
+        </div>
+        <div>
+            <p id="min">00</p>
+        </div>
+        <div class="b">
+            <p>:</p>
+        </div>
+        <div>
+            <p id="seg">00</p>
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+
+
+        const f = document.getElementById('formulario');
+        var ho = document.getElementById("hor");
+        var mi = document.getElementById("min");
+        var se = document.getElementById("seg");
+
+        var timeoutID;
+
+        var i = 0;
+        f.addEventListener('submit', (e) => {
+            clearTimeout(timeoutID)
+            e.preventDefault();
+            const h = document.getElementById('h').value;
+            const m = document.getElementById('m').value;
+            const s = document.getElementById('s').value;
+            establecerHora(h, m, s);
+        });
+
+
+
+        function establecerHora(h, m, s) { // We need to wrap the loop into an async function for this to work
+            timeoutID = setTimeout(() => {
+
+                s++;
+                if (s == 60) {
+                    m++;
+                    s = 0;
+                }
+
+                if (m == 60) {
+                    h++;
+                    m = 0;
+                }
+
+                if (h == 24) {
+                    h = 0;
+                }
+
+                write(h, m, s)
+                establecerHora(h, m, s)
+            }, 1000);
+        }
+
+        function write(h, m, s) {
+            ho.innerHTML = h
+            mi.innerHTML = m
+            se.innerHTML = s
+        }
+
+    </script>
+
+</body>
+
+</html>

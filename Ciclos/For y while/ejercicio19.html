@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Décimonoveno Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 30%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Décimonoveno Ejercicio</h1>
+    <hr>
+    <br>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>N° Ingresado</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla1">
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>N° total</th>
+                <th>Total Pares</th>
+                <th>Total Impares</th>
+                <th>Suma Total</th>
+                <th>Promedio</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla2">
+        </tbody>
+    </table>
+</body>
+
+<!-- Pida como entrada una serie de números, la serie termina cuando se digite el numero cero,
+visualizar los números digitados y e otra tabla visualizar la cantidad de números digitados,
+cantidad d números pares digitados, cantidad de números impares digitados, cantidad de
+números pares digitados, la suma de los números y el promedio de los números digitados.  -->
+
+<script>
+    var tabla1 = '';
+    var tabla2 = '';
+    var num;
+    var par = 0;
+    var impar = 0;
+    var cont = 0;
+    var sum = 0;
+    var prom;
+
+    do {
+        num = parseInt(prompt("Ingresa un número, esto acaba cuando ingreses cero", ""));
+
+        if (num != 0) {
+            cont++;
+            sum += num;
+
+            if (num % 2 == 0) {
+                par++;
+            } else {
+                impar++;
+            }
+
+            tabla1 += "<tr>";
+            tabla1 += "<td>" + num + "</td>"
+            tabla1 += "</tr>"
+        }
+
+    } while (num != 0);
+
+    document.getElementById("tabla1").innerHTML = tabla1;
+
+    prom = sum / cont;
+
+    tabla2 += "<tr>";
+    tabla2 += "<td>" + cont + "</td>"
+    tabla2 += "<td>" + par + "</td>"
+    tabla2 += "<td>" + impar + "</td>"
+    tabla2 += "<td>" + sum + "</td>"
+    tabla2 += "<td>" + prom + "</td>"
+    tabla2 += "</tr>"
+
+    document.getElementById("tabla2").innerHTML = tabla2;
+
+</script>
+
+</html>

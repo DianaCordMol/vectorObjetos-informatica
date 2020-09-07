@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decimosexto Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 20%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Decimosexto Ejercicio</h1>
+    <hr>
+    <br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Multiplicación</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla">
+
+        </tbody>
+    </table>
+    <!-- Programa que calcula el producto de dos números enteros y positivos mediante sumas sucesivas. -->
+    <script>
+        do {
+            var num1 = parseInt(prompt("Ingresa el primer número", ""));
+            var num2 = parseInt(prompt("Ingresa el número por el que quieres multiplicar a " + num1 + "", ""));
+            var resultado = 0;
+            var tablaDatos = '';
+
+            for (var i = 1; i <= num1; i++) {
+                resultado += num2;
+            }
+
+            tablaDatos += "<tr>";
+            tablaDatos += "<td>" + num1 + "x" + num2 + "</td>";
+            tablaDatos += "<td>" + resultado + "</td>";
+            tablaDatos += "</tr>";
+
+            document.getElementById("tabla").innerHTML = tablaDatos;
+
+        } while (num1 && num2 < 0);
+
+
+
+
+    </script>
+</body>
+
+</html>

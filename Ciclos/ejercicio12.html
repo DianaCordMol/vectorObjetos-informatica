@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duodécimo Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 20%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Duodécimo Ejercicio</h1>
+    <hr>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Factorial</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla">
+
+        </tbody>
+    </table>
+    <!-- Calcular el factorial de un número. -->
+    <script>
+        var tablaDatos = '';
+        var factorial = 1;
+        var num = parseInt(prompt("Ingresa un número", ""));
+
+        for (i = 1; i <= num; i++){
+            factorial *= i;
+        }
+
+        tablaDatos += "<tr>";
+        tablaDatos += "<td>" + num + "</td>";
+        tablaDatos += "<td>" + factorial + "</td>";
+        tablaDatos += "</tr>";
+
+        document.getElementById("tabla").innerHTML = tablaDatos;
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tercer Ejercicio</title>
+    <link rel="stylesheet" href="ejercicio3.css">
+</head>
+
+<body>
+
+    <h1>DATOS PERSONALES</h1>
+
+    <table>
+        <tr>
+            <td>Cédula</td>
+            <td>
+                <input type="number" placeholder="Cédula" id="cedula" class="cedula">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Nombre</td>
+            <td>
+                <input type="text" placeholder="Nombre" id="nombre" class="nombre">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Apellido</td>
+            <td>
+                <input type="text" placeholder="Apellido" id="apellido" class="apellido">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Edad</td>
+            <td>
+                <input type="number" placeholder="Edad" id="edad" class="edad" min="18">
+            </td>
+        </tr>
+    </table>
+
+    <button type="button" onclick="mostrarDatos()" id="guardar">Guardar</button>
+
+    <div class="modif">
+
+        <p>Campo a modificar</p>
+
+        <select name="" id="seleccion" class="seleccion">
+
+            <option value="1">Cédula</option>
+            <option value="2">Nombre</option>
+            <option value="3">Apellido</option>
+            <option value="4">Edad</option>
+
+        </select>
+
+        <p>Dato</p>
+        <input type="text" id="nuevoDato" class="nuevoDato">
+
+        <button type="button" onclick="change()" id="modificar">Modificar</button>
+
+    </div>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla1">
+
+        </tbody>
+
+    </table>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla2">
+
+        </tbody>
+
+    </table>
+
+    <script src="ejercicio3.js">
+
+    </script>
+
+
+
+</body>
+
+</html>

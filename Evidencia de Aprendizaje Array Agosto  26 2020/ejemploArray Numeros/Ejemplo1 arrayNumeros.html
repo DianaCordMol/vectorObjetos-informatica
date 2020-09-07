@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejeemplo 1 ArrayNumeros</title>
+    <style>
+        body {
+            background-color: aquamarine;
+            font-style: oblique;
+        }
+
+        table {
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>EJEMPLO MANEJO ARRAY DE NUMEROS</h1>
+        <hr size="20" color="blue">
+        <br>
+        <table border="5">
+            <thead>
+                <th>Descripción</th>
+                <th>Valor</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Número</td>
+                    <td><input type="text" name="num" id="num" placeholder="Digite un Número" autofocus></td>
+                </tr>
+            </tbody>
+        </table>
+        <table border="5">
+            <tbody>
+                <tr>
+                    <td><button onclick="agregar()">AGREGAR</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <hr size="20" color="blue">
+        <br>
+        <h1>Lista de Números</h1>
+        <br>
+        <table border="5">
+            <tbody id="cuerpo"></tbody>
+        </table>
+        <hr size="20" color="blue">
+        <br>
+        <h1>Resultado de Operaciones con los Datos de Array</h1>
+        <br>
+        <table border="5">
+            <th>Operación</th>
+            <th>Resultado</th>
+            <tbody id="otroCuerpo">
+            </tbody>
+
+        </table>
+    </center>
+    <script src="Ejemplo1 arrayNumeros.js"></script>
+</body>
+
+</html>

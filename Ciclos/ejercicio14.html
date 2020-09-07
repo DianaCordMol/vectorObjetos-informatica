@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital</title>
+
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        header {
+            border-bottom: 2px solid white;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 80px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px;
+            color: white;
+            background: blue;
+            border: 0;
+            font-size: 18px;
+            border-radius: 2px;
+        }
+
+        .reloj {
+            margin: 20px auto;
+            width: 600px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bolder;
+            font-size: 60px;
+            background: white;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Convertir a romanos</h1>
+    </header>
+
+
+
+
+    <label for="num">Numero</label>
+    <input id="num" type="number" min="1" max="5000" required value="1">
+
+    <button onclick="calcular()">Calcular</button>
+
+
+    <div class="reloj">
+        <p id="rom">Romano</p>
+    </div>
+
+
+    <script>
+
+
+        var num = document.getElementById("num");
+        var rom = document.getElementById("rom");
+
+
+        function calcular() {
+
+            var numero = num.value
+
+            if (numero > 0 && numero < 5000) {
+                var i = 0;
+                var uniMil = 0;
+                var uniCente = 0;
+                var uniDece = 0;
+                var uniUni = 0;
+                var numRom = "";
+
+                uniMil = parseInt(numero / 1000);
+                uniCente = parseInt(numero / 100 % 10);
+                uniDece = parseInt(numero / 10 % 10);
+                uniUni = parseInt(numero % 10);
+
+                console.log(uniMil)
+                console.log(uniCente)
+                console.log(uniDece)
+                console.log(uniUni)
+
+
+                for (i = 1; i <= uniMil; i++) {
+                    numRom = numRom + "M";
+                }
+
+
+                if (uniCente == 9) {
+                    numRom = numRom + "CM";
+                } else if (uniCente >= 5) {
+                    numRom = numRom + "D";
+                    for (i = 6; i <= uniCente; i++) {
+                        numRom = numRom + "C";
+                    }
+                } else if (uniCente == 4) {
+                    numRom = numRom + "CD";
+                } else {
+                    for (i = 1; i <= uniCente; i++) {
+                        numRom = numRom + "C";
+                    }
+                }
+
+
+                if (uniDece == 9) {
+                    numRom = numRom + "XC";
+                } else if (uniDece >= 5) {
+                    numRom = numRom + "L";
+                    for (i = 6; i <= uniDece; i++) {
+                        numRom = numRom + "X";
+                    }
+                } else if (uniDece == 4) {
+                    numRom = numRom + "XL";
+                } else {
+                    for (i = 1; i <= uniDece; i++) {
+                        numRom = numRom + "X";
+                    }
+                }
+
+
+                if (uniUni == 9) {
+                    numRom = numRom + "IX";
+                } else if (uniUni >= 5) {
+                    numRom = numRom + "V";
+                    for (i = 6; i <= uniUni; i++) {
+                        numRom = numRom + "I";
+                    }
+                } else if (uniUni == 4) {
+                    numRom = numRom + "IV";
+                } else {
+                    for (i = 1; i <= uniUni; i++) {
+                        numRom = numRom + "I";
+                    }
+                }
+                console.log(numRom)
+                rom.innerHTML = numRom
+            } else {
+                alert("Debe introducir un número entre 1 y 4999")
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

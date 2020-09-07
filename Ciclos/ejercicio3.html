@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tercer Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 30%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tercer Ejercicio</h1>
+    <hr>
+    <br>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>Contador</th>
+                <th>N° Ingresado</th>
+                <th>Suma</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla1">
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>N° total</th>
+                <th>Suma Total</th>
+                <th>Promedio</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla2">
+        </tbody>
+    </table>
+</body>
+
+<!-- Realice una aplicación que pida como entrada una serie de números diferentes de cero, la
+serie termina cuando se digita el número cero, el programa debe contar, visualizar, sumar, y
+calcular el promedio de los números digitados, los números y resultados deben ser
+visualizados en una o dos tablas. -->
+
+<script>
+    var tabla1 = '';
+    var tabla2 = '';
+    var num;
+    var cont = 0;
+    var sum = 0;
+    var prom;
+
+    do {
+        num = parseInt(prompt("Ingresa un número, esto acaba cuando ingreses cero", ""));
+
+        if (num != 0) {
+            cont++;
+            sum += num;
+
+            tabla1 += "<tr>";
+            tabla1 += "<td>" + cont + "</td>"
+            tabla1 += "<td>" + num + "</td>"
+            tabla1 += "<td>" + sum + "</td>"
+            tabla1 += "</tr>"
+        }
+        
+    } while (num != 0);
+
+    document.getElementById("tabla1").innerHTML = tabla1;
+
+    prom = sum / cont;
+
+    tabla2 += "<tr>";
+    tabla2 += "<td>" + cont + "</td>"
+    tabla2 += "<td>" + sum + "</td>"
+    tabla2 += "<td>" + prom + "</td>"
+    tabla2 += "</tr>"
+
+    document.getElementById("tabla2").innerHTML = tabla2;
+
+</script>
+
+</html>

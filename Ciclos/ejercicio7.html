@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Séptimo Ejercicio</title>
+    <style>
+        body {
+            background-color: #032B43;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+
+        hr {
+            /* #773344*/
+            /* border: 0px; */
+            height: 2px;
+            background-color: #773344;
+            /* border-color: white; */
+        }
+
+        table {
+            width: 20%;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-collapse: collapse;
+            background-color: #E3B5A4;
+            color: #032B43;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Séptimo Ejercicio</h1>
+    <hr>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Números impares</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla1">
+
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Total impares</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla2">
+
+        </tbody>
+    </table>
+    <!-- imprima los números impares hasta el 100 y que imprima cuantos impares hay. -->
+    <script>
+        var tablaDatos = '';
+        var tablaTotal = '';
+        var cont = 0;
+
+        for (var i = 0; i <= 100; i++) {
+
+            if (i % 2 != 0) {
+                cont++;
+                tablaDatos += "<tr>";
+                tablaDatos += "<td>" + i + "</td>";
+                tablaDatos += "</tr>";
+            }
+        }
+
+        document.getElementById("tabla1").innerHTML = tablaDatos;
+
+        tablaTotal += "<tr>";
+        tablaTotal += "<td>" + cont + "</td>";
+        tablaTotal += "</tr>";
+
+        document.getElementById("tabla2").innerHTML = tablaTotal;
+
+    </script>
+</body>
+
+</html>

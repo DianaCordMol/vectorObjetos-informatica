@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Manejo Objetos</title>
+    <style>
+        body {
+            background-color: burlywood;
+            font-style: oblique;
+        }
+
+        table {
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>EJEMPLO DE MANIPULACIÓN DE ARRAY DE OBJETO ESTUDIANTE</h1>
+        <hr size="30" color="blue">
+        <br>
+        <table border="5">
+            <th>DESCRIPCIÓN</th>
+            <th>DATO</th>
+            <tbody>
+                <tr>
+                    <td>Cédula</td>
+                    <td><input type="text" id="ced" name="ced" placeholder="Digite Cédula"></td>
+                </tr>
+                <tr>
+                    <td>Nombres</td>
+                    <td><input type="text" id="nom" name="nom" placeholder="Digite Nombres"></td>
+                </tr>
+                <tr>
+                    <td>Apellidos</td>
+                    <td><input type="text" id="ape" name="ape" placeholder="Digite Apellidos"></td>
+                </tr>
+                <tr>
+                    <td>Nota 1</td>
+                    <td><input type="text" id="n1" name="n1" placeholder="Digite Nota 1"></td>
+                </tr>
+                <tr>
+                    <td>Nota 2</td>
+                    <td><input type="text" id="n2" name="n2" placeholder="Digite Noota 2"></td>
+                </tr>
+                <tr>
+                    <td>Nota 3</td>
+                    <td><input type="text" id="n3" name="n3" placeholder="Digite Nota 3"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table border="5">
+            <tr>
+                <td><button onclick="agregar()">AGREGAR</button></td>
+            </tr>
+        </table>
+        <h1>LISTADO DE ESTUDIANTES</h1>
+        <br>
+        <table border="5">
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nota 1</th>
+            <th>Nota 2</th>
+            <th>Nota 3</th>
+            <th>Nota Final</th>
+            <th>Estado</th>
+            <th>Reconocimiento</th>
+            <tbody id="cuerpo"></tbody>
+        </table>
+        <h1>ANÁLISIS DE LOS RESULTADOS DEL CURSO</h1>
+        <table>
+            <th>Descripción</th>
+            <th>Resultado</th>
+            <tbody id="table2"></tbody>
+        </table>
+        <br>
+    </center>
+    <script>
+        var myArrayEst = []; //declaracción de Array de objetos
+
+        function agregar() {
+            var usuario = Object();
+            usuario.cedula = document.getElementById('ced').value;
+            usuario.nombre = document.getElementById('nom').value;
+            usuario.apellido = document.getElementById('ape').value;
+            usuario.n1 = document.getElementById('n1').value;
+            usuario.n2 = document.getElementById('n2').value;
+            usuario.n3 = document.getElementById('n3').value;
+            myArrayEst.push(usuario); // insertar en array el estudiante
+            limpiarCajaTexto();
+            listadoEst();
+        }
+
+        function limpiarCajaTexto() {
+            document.getElementById('ced').value = '';
+            document.getElementById('nom').value = '';
+            document.getElementById('ape').value = '';
+            document.getElementById('n1').value = '';
+            document.getElementById('n2').value = '';
+            document.getElementById('n3').value = '';
+            document.getElementById('ced').focus();
+        }
+
+        function listadoEst() {
+            var salida = '';
+            for (i in myArrayEst) {
+
+                var nf = notaFinal(myArrayEst[i].n1, myArrayEst[i].n2, myArrayEst[i].n3);
+                var clr = color(myArrayEst[i].n1, myArrayEst[i].n2, myArrayEst[i].n3);
+                var est = estado(myArrayEst[i].n1, myArrayEst[i].n2, myArrayEst[i].n3);
+                var rec = reconocimiento(myArrayEst[i].n1, myArrayEst[i].n2, myArrayEst[i].n3)
+
+                var arr = myArrayEst[i];
+
+                salida += '<tr>'
+                salida += '<td>' + arr.cedula + '</td>';
+                salida += '<td>' + arr.nombre + '</td>';
+                salida += '<td>' + arr.apellido + '</td>';
+                salida += '<td>' + arr.n1 + '</td>';
+                salida += '<td>' + arr.n2 + '</td>';
+                salida += '<td>' + arr.n3 + '</td>';
+                salida += '<td style="font - weight: bolder; color: ' + clr + '">' + nf + '</td > ';
+                salida += '<td>' + est + '</td>';
+                salida += '<td>' + rec + '</td>';
+                salida += '</tr>';
+            }
+            document.getElementById('cuerpo').innerHTML = salida;
+        }
+
+        function notaFinal(n1, n2, n3) {
+            var def = (parseFloat(n1) + parseFloat(n2) + parseFloat(n3)) / 3;
+            return def.toFixed(2);
+        }
+
+        function color(n1, n2, n3) {
+            if (notaFinal(n1, n2, n3) >= 3) {
+                return "blue";
+            } else {
+                return "red";
+            }
+        }
+
+        function estado(n1, n2, n3) {
+            var nf = parseFloat(notaFinal(n1, n2, n3));
+            if (nf >= 3) {
+                return "Aprobado";
+            } else {
+                return "Reprobado";
+            }
+        }
+
+        function reconocimiento(n1, n2, n3) {
+            var nf = parseFloat(notaFinal(n1, n2, n3));
+            var reconocimiento;
+
+            if (nf >= 0 && nf <= 1) {
+                reconocimiento = "Deficiente";
+            } else if (nf > 1 && nf < 3) {
+                reconocimiento = "Insuficiente";
+            } else if (nf >= 3 && nf <= 3.5) {
+                reconocimiento = "Bueno";
+            } else if (nf > 3.5 && nf <= 4) {
+                reconocimiento = "Aceptable";
+            } else if (nf > 4 && nf <= 4.5) {
+                reconocimiento = "Sobresaliente";
+            } else if (nf > 4.5 && nf <= 5) {
+                reconocimiento = "Excelente";
+            }
+            return reconocimiento;
+        }
+
+        function analisisEst() {
+            var salida1 = '';
+            for (i in myArrayEst) {
+                var prom;
+                var apr;
+                var repr;
+                var def;
+                var ins;
+                var buen;
+                var acep;
+                var sobr;
+                var exc;
+
+                var arr = myArrayEst[i];
+
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Promedio Curso" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Número aprobados" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Número reprobados" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+                
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Número deficientes" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Número insuficientes" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+                
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Número buenos" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Número aceptables" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Número sobresalientes" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+
+                salida1 += "<tr>";
+                salida1 += "<td>" + "Número excelentes" + "</td>";
+                salida1 += "<td>" +  + "</td>";
+                salida1 += "</tr>";
+            }
+            document.getElementById('table2').innerHTML = salida1;
+        }
+
+        function promedio(n1, n2, n3) {
+            var sum = 0;
+
+
+        }
+
+        // yo en qué momento te mandé solicitud?
+
+
+
+    </script>
+</body>
+
+</html>
