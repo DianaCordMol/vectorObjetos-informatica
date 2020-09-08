@@ -57,7 +57,66 @@
                 <td><button onclick="agregar()">AGREGAR</button></td>
             </tr>
         </table>
-        
+
+
+        <table id="activar" style="display: none;" border="5" style="margin-top: 20px;">
+            <tr>
+                <td>
+                    <select id="opcion">
+
+                        <option value="1">Cédula</option>
+                        <option value="2">Nombre</option>
+                        <option value="3">Apellido</option>
+
+                    </select>
+                </td>
+                <td>
+                    <input type="text" id="bus">
+                </td>
+                <td>
+                    <button onclick="buscar()" style="background: green; padding: 10px">Buscar</button>
+                </td>
+            </tr>
+        </table>
+
+        <table id="tbEdit" style="display: none;" border="5">
+            <caption style="background: blue; padding: 20px; color: white; margin-top: 20px">Editar estudiante</caption>
+            <th>DESCRIPCIÓN</th>
+            <th>DATO</th>
+            <tbody>
+                <tr>
+                    <td>Cédula</td>
+                    <td><input type="text" id="eced" placeholder="Digite Cédula"></td>
+                </tr>
+                <tr>
+                    <td>Nombres</td>
+                    <td><input type="text" id="enom" placeholder="Digite Nombres"></td>
+                </tr>
+                <tr>
+                    <td>Apellidos</td>
+                    <td><input type="text" id="eape" placeholder="Digite Apellidos"></td>
+                </tr>
+                <tr>
+                    <td>Nota 1</td>
+                    <td><input type="text" id="en1" placeholder="Digite Nota 1"></td>
+                </tr>
+                <tr>
+                    <td>Nota 2</td>
+                    <td><input type="text" id="en2" placeholder="Digite Noota 2"></td>
+                </tr>
+                <tr>
+                    <td>Nota 3</td>
+                    <td><input type="text" id="en3" placeholder="Digite Nota 3"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button style="padding: 15px;" onclick="saveEdit()">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
         <h1>LISTADO DE ESTUDIANTES</h1>
         <br>
         <table border="5">
@@ -83,6 +142,103 @@
     <script>
         var myArrayEst = []; //declaracción de Array de objetos
 
+        var edi = -1;
+
+        function buscar() {
+            var op = document.getElementById('opcion').value;
+
+            var bus = document.getElementById('bus').value;
+
+            var objt = -1;
+
+            switch (parseInt(op)) {
+                case 1:
+                    for (let index = 0; index < myArrayEst.length; index++) {
+                        const student = myArrayEst[index];
+                        if (student.cedula == bus) {
+                            objt = index;
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    for (let index = 0; index < myArrayEst.length; index++) {
+                        const student = myArrayEst[index];
+                        if (student.nombre == bus) {
+                            objt = index;
+                            break;
+                        }
+                    }
+                    break;
+                case 3:
+                    for (let index = 0; index < myArrayEst.length; index++) {
+                        const student = myArrayEst[index];
+                        if (student.apellido == bus) {
+                            objt = index;
+                            break;
+                        }
+                    }
+                    break;
+            }
+
+
+
+            if (objt > -1) {
+                document.getElementById('tbEdit').style.display = "block";
+                document.getElementById('tbEdit').style.margin = "auto";
+                document.getElementById('tbEdit').style.width = "340px";
+                editar(objt);
+            } else {
+                document.getElementById('tbEdit').style.display = "none";
+                alert("No se encontró");
+                edi = -1;
+            }
+        }
+
+
+        function editar(pos) {
+
+            edi = pos;
+
+            //eced, enom,  eape,  en1,  en2, en3
+
+            cedula = myArrayEst[pos].cedula;
+            nombre = myArrayEst[pos].nombre;
+            apellido = myArrayEst[pos].apellido;
+            n1 = myArrayEst[pos].n1;
+            n2 = myArrayEst[pos].n2;
+            n3 = myArrayEst[pos].n3;
+
+            document.getElementById('eced').value = cedula;
+            document.getElementById('enom').value = nombre;
+            document.getElementById('eape').value = apellido;
+            document.getElementById('en1').value = n1;
+            document.getElementById('en2').value = n2;
+            document.getElementById('en3').value = n3;
+
+        }
+
+        function saveEdit() {
+
+            myArrayEst[edi].cedula = document.getElementById('eced').value;
+            myArrayEst[edi].nombre = document.getElementById('enom').value;
+            myArrayEst[edi].apellido = document.getElementById('eape').value;
+            myArrayEst[edi].n1 = document.getElementById('en1').value;
+            myArrayEst[edi].n2 = document.getElementById('en2').value;
+            myArrayEst[edi].n3 = document.getElementById('en3').value;
+
+            listadoEst();
+
+            document.getElementById('tbEdit').style.display = "none";
+
+        }
+
+
+        var j = 0;
+
+
+
+
         function agregar() {
             var usuario = Object();
             usuario.cedula = document.getElementById('ced').value;
@@ -94,6 +250,11 @@
             myArrayEst.push(usuario); // insertar en array el estudiante
             limpiarCajaTexto();
             listadoEst();
+
+            if (j == 0) {
+                document.getElementById('activar').style.display = "inline-block";
+            }
+            j++;
         }
 
         function limpiarCajaTexto() {
@@ -117,8 +278,6 @@
 
                 var arr = myArrayEst[i];
 
-                console.log(Object.values(arr));
-
                 salida += '<tr>'
                 salida += '<td>' + arr.cedula + '</td>';
                 salida += '<td>' + arr.nombre + '</td>';
@@ -133,9 +292,7 @@
             }
             document.getElementById('cuerpo').innerHTML = salida;
 
-            // console.log(promedioCurso())
-            // console.log(reprobadosCurso());
-            console.log(excelentesCurso())
+            analisisEst();
         }
 
         function notaFinal(n1, n2, n3) {
@@ -182,66 +339,56 @@
 
         function analisisEst() {
             var salida1 = '';
-            for (i in myArrayEst) {
-                var prom;
-                var apr;
-                var repr;
-                var def;
-                var ins;
-                var buen;
-                var acep;
-                var sobr;
-                var exc;
 
-                var arr = myArrayEst[i];
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Promedio Curso" + "</td>";
+            salida1 += "<td>" + promedioCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Promedio Curso" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Número aprobados" + "</td>";
+            salida1 += "<td>" + aprobadosCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Número aprobados" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Número reprobados" + "</td>";
+            salida1 += "<td>" + reprobadosCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Número reprobados" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Número deficientes" + "</td>";
+            salida1 += "<td>" + deficientesCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Número deficientes" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Número insuficientes" + "</td>";
+            salida1 += "<td>" + insuficientesCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Número insuficientes" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Número buenos" + "</td>";
+            salida1 += "<td>" + buenosCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Número buenos" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Número aceptables" + "</td>";
+            salida1 += "<td>" + aceptablesCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Número aceptables" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Número sobresalientes" + "</td>";
+            salida1 += "<td>" + sobresalientesCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Número sobresalientes" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
+            salida1 += "<tr>";
+            salida1 += "<td>" + "Número excelentes" + "</td>";
+            salida1 += "<td>" + excelentesCurso() + "</td>";
+            salida1 += "</tr>";
 
-                salida1 += "<tr>";
-                salida1 += "<td>" + "Número excelentes" + "</td>";
-                salida1 += "<td>" + + "</td>";
-                salida1 += "</tr>";
-            }
             document.getElementById('table2').innerHTML = salida1;
         }
+
+
 
         function promedioCurso() {
 
@@ -355,10 +502,6 @@
             }
             return excelentes;
         }
-
-
-        // yo en qué momento te mandé solicitud?
-
 
 
     </script>
